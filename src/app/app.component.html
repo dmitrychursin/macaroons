@@ -1,0 +1,150 @@
+<header class="header">
+	<div class="container header__container">
+		<a class="logo" href="#">
+			<img src="assets/images/macaroons.png" alt="logo">
+		</a>
+		<nav class="menu" id="menu">
+			<div class="menu__close">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+					y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+					<g>
+						<g>
+							<path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872
+		  c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872
+		  c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052
+		  L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116
+		  c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952
+		  c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116
+		  c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z" />
+						</g>
+					</g>
+				</svg>
+			</div>
+			<ul class="menu__list">
+				<li class="menu__item">
+					<a [routerLink]="'/'" fragment="pies" class="menu-link">Пироженки</a>
+				</li>
+				<li class="menu__item">
+					<a [routerLink]="'/'" fragment="about" class="menu-link">О нас</a>
+				</li>
+				<li class="menu__item">
+					<a [routerLink]="'/'" fragment="order" class="menu-link">Оформить заказ</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="contact">
+			<a class="tel" [href]="linkPhone">{{phone | phone}}</a>
+		</div>
+    <div class="header__min-menu">
+      <ul class="menu__min-list">
+        <li class="menu__min-item">
+          <a [routerLink]="'/'" fragment="pies" class="menu-min-link">Пироженки</a>
+        </li>
+        <li class="menu__min-item">
+          <a [routerLink]="'/'" fragment="about" class="menu-min-link">О нас</a>
+        </li>
+        <li class="menu__min-item">
+          <a [routerLink]="'/'" fragment="order" class="menu-min-link">Оформить заказ</a>
+        </li>
+      </ul>
+    </div>
+	</div>
+</header>
+<section class="main">
+	<div class="container main__container">
+		<h1 class="main__title">Мягкие французские
+			пироженки Macaroons</h1>
+		<div class="main__info">
+			Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
+		</div>
+		<div class="main-actions">
+			<button effectsButtons class="btn main__btn" (click)="scrollTo(productsElement)">Выбрать макарун</button>
+		</div>
+		<div class="main__images">
+			<img class="main__image_img" src="assets/images/main-img.png" alt="Cakes">
+		</div>
+	</div>
+</section>
+<section class="advantage" id="about">
+	<div class="container advantage__container">
+		<div class="compound">
+			<h2 class="compound__title_black">Мы печём для вас
+				вкуснейшие макаруны уже более 10 лет</h2>
+			<div class="compound__info">
+				Все пироженки мы готовим только из натуральных и качественных продуктов, без консервантов,
+				ароматизаторов,
+				красителей. Используем в приготовлении сливочное масло 82,5%, без дрожжей, маргарина, разрыхлителей и
+				улучшителей муки.
+			</div>
+			<div class="compound__images">
+				<img class="compound__image_img" src="assets/images/cookie.png" alt="Cookie">
+			</div>
+		</div>
+		<div class="pluses">
+
+			<advantages *ngFor="let pluse of pluses; index as i" [pluses]="pluse" [index]="i+1"></advantages>
+
+		</div>
+	</div>
+</section>
+
+<section class="products" #productsElement>
+	<div class="container products__container" id="pies">
+		<h2 class="products__title">Выберите свой макарун</h2>
+		<div class="products__cards">
+
+			<product *ngFor="let product of products" [product]="product"
+				(addToCartEvent)="addToCart(product.title, orderElement)"></product>
+
+		</div>
+	</div>
+</section>
+
+<section class="order" #orderElement>
+	<div class="container order__container" id="order">
+		<img class="strawberry-big" src="assets/images/strawberry-big.png" alt="Strawberry-1">
+		<img class="strawberry-small" src="assets/images/strawberry-small.png" alt="Strawberry-2">
+		<div class="order__images">
+			<img class="order__image_img" src="assets/images/macaron.png" alt="">
+		</div>
+		<div class="order__form">
+			<div class="order__form__title">Закажите макарун!</div>
+			<div class="order__form__text">Выберите понравившийся макарун, заполните форму и ожидайте звонка нашего
+				пекаря!
+			</div>
+			<div class="order__form__main">
+				<div class="order__form__point">Ваш выбор</div>
+				<input type="text" class="base-input order__base-input" placeholder="Напишите, что хотите заказать..."
+					[(ngModel)]="formValues.productTitle">
+				<div class="order__form__point">Заполните данные для заказа</div>
+				<input type="text" class="base-input order__base-input" placeholder="Ваше имя"
+					[(ngModel)]="formValues.name">
+				<input type="text" class="base-input order__base-input" placeholder="+375 (__) ___ - __ - __"
+					[(ngModel)]="formValues.phone">
+				<button effectsButtons class="btn order__form__btn" (click)="createOrder()">Оформить заказ</button>
+			</div>
+		</div>
+	</div>
+</section>
+<footer class="footer">
+	<div class="container footer__container">
+		<div class="footer__info">
+			<a class="logo" href="#">
+				<img src="assets/images/macaroons.png" alt="logo">
+			</a>
+			<div class="rights">Все права защищены, 2020</div>
+		</div>
+		<div class="social-network">
+			<a [href]="link">
+				<img class="social-network__logo" src="assets/images/instagram.png" alt="instagram">
+			</a>
+			<div class="social-network__text">Мы в Instagram</div>
+		</div>
+		<div class="contact">
+			<a class="tel" [href]="linkPhone">{{phone | phone}}</a>
+		</div>
+		<div class="rights-2">Все права защищены, 2020</div>
+	</div>
+</footer>
+
+<basket></basket>

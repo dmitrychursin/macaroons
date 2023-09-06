@@ -1,0 +1,13 @@
+<div class="product__card">
+	<div class="product">
+		<img class="product__card_img" src="assets/images/macaroons/{{product.image}}">
+		<h3 class="product__title">{{product.title}}</h3>
+		<div class="product__order">
+			<div class="product__order_pieces">{{product.pieces}}</div>
+			<div class="product__order_price">{{product.price | currency: 'руб'}}</div>
+			<div class="product__actions">
+				<button class="btn order__btn" (click)="addProductToCart()" effectsButtons>Заказать</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<div *ngIf="showPresent" class="presents">
+	<div class="present__number" id="present__number">{{cartServices.count}}</div>
+	<div class="present">
+		<img class="present__image_img" src="assets/images/cart.png" alt="Present">
+	</div>
+	<div class="present-text">
+		<div class="present-text__text">{{cartProductService.count | currency: 'руб'}} </div>
+	</div>
+</div>
